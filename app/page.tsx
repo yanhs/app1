@@ -1,11 +1,29 @@
+import Header from "./components/Header";
 import Hero from "./components/Hero";
+import Services from "./components/Services";
+import Pricing from "./components/Pricing";
+import Portfolio from "./components/Portfolio";
+import Testimonials from "./components/Testimonials";
+import About from "./components/About";
+import Map from "./components/Map";
+import Contacts from "./components/Contacts";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-center py-32 px-16 bg-white dark:bg-black">
+    <>
+      <Header />
+      <main>
         <Hero />
+        <Services />
+        <Pricing />
+        <Portfolio />
+        <Testimonials />
+        <About />
+        <Map />
+        <Contacts />
       </main>
-    </div>
+      <Footer />
+    </>
   );
 }
