@@ -62,9 +62,19 @@ const testimonials = [
 export default function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [itemsPerPage, setItemsPerPage] = useState(1);
 
-  const itemsPerPage = typeof window !== "undefined" && window.innerWidth >= 768 ? 3 : 1;
   const maxIndex = Math.max(0, testimonials.length - itemsPerPage);
+
+  useEffect(() => {
+    const updateItemsPerPage = () => {
+      setItemsPerPage(window.innerWidth >= 768 ? 3 : 1);
+    };
+
+    updateItemsPerPage();
+    window.addEventListener("resize", updateItemsPerPage);
+    return () => window.removeEventListener("resize", updateItemsPerPage);
+  }, []);
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
